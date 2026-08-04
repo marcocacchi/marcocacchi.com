@@ -16,7 +16,6 @@
     .nav-links { display: flex; gap: 30px; font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; letter-spacing: 0.04em; }
     .nav-links a { color: #9aa3a5; transition: color 0.2s; }
     .nav-links a:hover { color: #4db8bf; }
-    .nav-links a.active { color: #4db8bf; }
 
     .hero { position: relative; padding: 132px 6vw 116px; border-bottom: 1px solid rgba(212,208,200,0.09); background: linear-gradient(160deg,#0c1f21 0%,#141718 58%); overflow: hidden; }
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,208,200,0.032) 1px,transparent 1px), linear-gradient(90deg,rgba(212,208,200,0.032) 1px,transparent 1px); background-size: 48px 48px; }
@@ -59,6 +58,30 @@
     .cap-title { font-weight: 700; font-size: 18px; margin-bottom: 7px; color: #d4d0c8; }
     .cap-desc { font-size: 14.5px; color: #97938b; line-height: 1.65; }
 
+    /* ── AI IN PRACTICE ── */
+    .ai { position: relative; padding: 108px 6vw; background: #181a1b; border-top: 1px solid rgba(212,208,200,0.09); overflow: hidden; }
+    .ai-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,208,200,0.026) 1px,transparent 1px), linear-gradient(90deg,rgba(212,208,200,0.026) 1px,transparent 1px); background-size: 48px 48px; }
+    .ai-glow { position: absolute; bottom: -220px; left: -120px; width: 620px; height: 620px; border-radius: 50%; background: radial-gradient(circle, rgba(77,184,191,0.055) 0%, rgba(24,26,27,0) 70%); }
+    .ai-inner { position: relative; max-width: 1400px; margin: 0 auto; }
+    .ai-head { max-width: 820px; margin-bottom: 56px; }
+    .ai-head .section-label { display: block; margin-bottom: 22px; }
+    .ai h2 { font-size: clamp(34px,4.6vw,52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.06; color: #c8c4bc; margin-bottom: 26px; text-wrap: pretty; }
+    .ai h2 span { color: #4db8bf; }
+    .ai-lead { font-size: clamp(17px,1.9vw,20px); line-height: 1.7; color: #a8a49c; text-wrap: pretty; }
+    .ai-lead + .ai-lead { margin-top: 16px; }
+
+    .ai-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 16px; }
+    .ai-card { background: #1e2223; border: 1px solid rgba(212,208,200,0.10); border-radius: 10px; padding: 30px 28px; transition: border-color 0.22s, transform 0.22s, background 0.22s; }
+    .ai-card:hover { border-color: rgba(77,184,191,0.42); transform: translateY(-3px); background: #202526; }
+    .ai-kicker { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #4db8bf; display: block; margin-bottom: 14px; }
+    .ai-card h3 { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; color: #d4d0c8; margin-bottom: 10px; line-height: 1.25; }
+    .ai-card p { font-size: 14.5px; line-height: 1.7; color: #97938b; }
+
+    .ai-note { margin-top: 16px; background: rgba(13,92,96,0.16); border: 1px solid rgba(77,184,191,0.24); border-radius: 10px; padding: 34px 32px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+    .ai-note h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; color: #d8d4cc; line-height: 1.2; }
+    .ai-note .ai-kicker { margin-bottom: 12px; }
+    .ai-note p { font-size: 15.5px; line-height: 1.75; color: #a5a199; }
+
     .connect { position: relative; padding: 120px 6vw; background: linear-gradient(160deg,#0c1f21 0%,#141718 60%); border-top: 1px solid rgba(212,208,200,0.09); text-align: center; overflow: hidden; }
     .connect-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(212,208,200,0.028) 1px,transparent 1px), linear-gradient(90deg,rgba(212,208,200,0.028) 1px,transparent 1px); background-size: 48px 48px; }
     .connect-inner { position: relative; }
@@ -74,6 +97,12 @@
       .about-grid { grid-template-columns: 1fr; gap: 24px; }
       .caps-grid { grid-template-columns: 1fr; }
       .cap, .cap.right { padding: 26px 0; border-right: none; }
+      .ai-note { grid-template-columns: 1fr; gap: 18px; padding: 28px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .ai-card:hover { transform: none; }
     }
   </style>
 </head>
@@ -85,7 +114,8 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#capabilities">Capabilities</a>
-      <a href="#connect" class="active">Contact</a>
+      <a href="#ai">AI in Practice</a>
+      <a href="#connect">Contact</a>
     </div>
   </nav>
 
@@ -112,9 +142,9 @@
         <div class="about-photo"><img src="Marco%20Cacchi%20-%20Profile%20Picture.jpeg" alt="Marco A. Cacchi" /></div>
       </div>
       <div class="about-text">
-        <p class="about-lead">My work sits at the intersection of technology and strategy — translating organizational goals into the platforms, workflows, and teams that actually carry them out.</p>
-        <p class="body">A cross-functional operator with a background spanning systems administration, product management, and digital infrastructure — with deep technical range and a track record of building durable systems that scale.</p>
-        <p class="body">I hold an <span class="hl">MBA in Sustainable Enterprise</span> and bring 15+ years across the full stack of operations — from configuring the platform to leading the team that runs on it.</p>
+        <p class="about-lead">My work sits at the intersection of technology and strategy, translating organizational goals into the platforms, workflows, and teams that actually carry them out.</p>
+        <p class="body">A cross-functional operator with a background spanning systems administration, product management, and digital infrastructure, with deep technical range and a track record of building durable systems that scale.</p>
+        <p class="body">I hold an <span class="hl">MBA in Sustainable Enterprise</span> and bring 15+ years across the full stack of operations, from configuring the platform to leading the team that runs on it.</p>
       </div>
     </div>
   </section>
@@ -124,12 +154,72 @@
     <div class="caps-inner">
       <div class="section-label caps-label">/ Capabilities</div>
       <div class="caps-grid">
-        <div class="cap"><div class="cap-row"><span class="cap-num">01</span><div><div class="cap-title">Systems &amp; Process Design</div><div class="cap-desc">Architecting scalable workflows across platforms — from CRM to content delivery — that reduce friction and drive execution.</div></div></div></div>
+        <div class="cap"><div class="cap-row"><span class="cap-num">01</span><div><div class="cap-title">Systems &amp; Process Design</div><div class="cap-desc">Architecting scalable workflows across platforms, from CRM to content delivery, that reduce friction and drive execution.</div></div></div></div>
         <div class="cap right"><div class="cap-row"><span class="cap-num">02</span><div><div class="cap-title">Digital Infrastructure</div><div class="cap-desc">Building and maintaining the platforms, integrations, and technical foundations organizations depend on to scale reliably.</div></div></div></div>
         <div class="cap"><div class="cap-row"><span class="cap-num">03</span><div><div class="cap-title">Product Management</div><div class="cap-desc">Translating business needs into roadmaps, coordinating cross-functional teams, and driving features from concept through delivery.</div></div></div></div>
-        <div class="cap right"><div class="cap-row"><span class="cap-num">04</span><div><div class="cap-title">AI Integration &amp; Adoption</div><div class="cap-desc">Identifying where AI creates real operational leverage and leading the adoption of tools and workflows that meaningfully improve how teams work.</div></div></div></div>
-        <div class="cap last"><div class="cap-row"><span class="cap-num">05</span><div><div class="cap-title">Budget &amp; Vendor Management</div><div class="cap-desc">Cost reduction through license audits, contract renegotiation, and supplier consolidation — without sacrificing quality.</div></div></div></div>
+        <div class="cap right"><div class="cap-row"><span class="cap-num">04</span><div><div class="cap-title">Team &amp; Contractor Operations</div><div class="cap-desc">Building lean teams, structuring roles, and managing distributed contractors across time zones and currencies.</div></div></div></div>
+        <div class="cap last"><div class="cap-row"><span class="cap-num">05</span><div><div class="cap-title">Budget &amp; Vendor Management</div><div class="cap-desc">Cost reduction through license audits, contract renegotiation, and supplier consolidation, without sacrificing quality.</div></div></div></div>
         <div class="cap right last"><div class="cap-row"><span class="cap-num">06</span><div><div class="cap-title">Cross-Functional Leadership</div><div class="cap-desc">Bridging operations, finance, and creative teams through clear communication, structured accountability, and shared tooling.</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI IN PRACTICE -->
+  <section id="ai" class="ai">
+    <div class="ai-grid-bg"></div>
+    <div class="ai-glow"></div>
+    <div class="ai-inner">
+      <div class="ai-head">
+        <span class="section-label">/ AI in Practice</span>
+        <h2>I don't adopt AI. I <span>put it to work.</span></h2>
+        <p class="ai-lead">Most organizations bought the tools first and went looking for the problem second. I work the other direction. Every place I've put AI to work started with something that was already costing us time, money, or quality, and the tool was the last decision, not the first.</p>
+        <p class="ai-lead">The result is not a pile of subscriptions. It is a smaller, faster operation that ships things it could not ship before.</p>
+      </div>
+
+      <div class="ai-cards">
+        <div class="ai-card">
+          <span class="ai-kicker">Product</span>
+          <h3>Customer-Facing Tools and Features</h3>
+          <p>I use AI to design, code, and ship features that customers actually touch. Internal ideas that once died in a backlog waiting for engineering capacity now get built and tested. The distance between spotting a gap in the customer experience and doing something about it has collapsed.</p>
+        </div>
+
+        <div class="ai-card">
+          <span class="ai-kicker">Decisions</span>
+          <h3>Business Data into Answers</h3>
+          <p>Usage reports, spend data, and platform metrics usually sit unread because pulling meaning out of them takes hours nobody has. I use AI to interrogate that data and bring leadership the answer they need. In practice that has meant right-sized licenses, renegotiated contracts, and bandwidth costs brought back under control.</p>
+        </div>
+
+        <div class="ai-card">
+          <span class="ai-kicker">Process</span>
+          <h3>Workflow Redesign and Automation</h3>
+          <p>Automation exposes every assumption nobody wrote down. When a workflow resists being automated, it is telling you the process underneath is broken, and fixing that is usually worth more than the automation itself. Document it, clean it up, then hand off the repetitive parts.</p>
+        </div>
+
+        <div class="ai-card">
+          <span class="ai-kicker">Production</span>
+          <h3>Media and Content at Scale</h3>
+          <p>Transcription, video and audio editing, chaptering, and metadata across a large and growing content library. Work that used to consume hours of contractor time per asset now moves in a fraction of that, which changes what a lean team can realistically take on.</p>
+        </div>
+
+        <div class="ai-card">
+          <span class="ai-kicker">Quality</span>
+          <h3>Accessibility and Compliance</h3>
+          <p>Accessibility standards and transcript accuracy are not optional, and at volume they are expensive to hold to a high bar by hand. AI-assisted review makes consistent quality achievable across an entire library instead of only on the newest releases.</p>
+        </div>
+
+        <div class="ai-card">
+          <span class="ai-kicker">Continuity</span>
+          <h3>Institutional Knowledge Capture</h3>
+          <p>When a long-tenured person leaves, the real loss is everything that lived in their head and never got written down. I use AI to turn scattered notes, threads, and recordings into documentation the next person can actually work from.</p>
+        </div>
+      </div>
+
+      <div class="ai-note">
+        <div>
+          <span class="ai-kicker">Judgment</span>
+          <h3>Knowing where AI does not belong</h3>
+        </div>
+        <p>Some decisions need a person. Judgment calls, sensitive communication, and anything where being wrong is expensive and hard to detect. Part of integrating AI well is being clear about where it earns its place and where it quietly introduces risk you will not notice until much later. That line is an operations decision, not a technology one.</p>
       </div>
     </div>
   </section>
@@ -153,5 +243,3 @@
 
 </body>
 </html>
-
-
