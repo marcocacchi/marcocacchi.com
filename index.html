@@ -21,11 +21,29 @@
     .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(45,150,120,0.10) 1px,transparent 1px), linear-gradient(90deg,rgba(45,150,120,0.10) 1px,transparent 1px); background-size: 48px 48px; }
     .hero-glow { position: absolute; top: -160px; right: -60px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(47,168,127,0.10) 0%, rgba(255,255,255,0) 68%); }
     .wrap { position: relative; max-width: 1400px; margin: 0 auto; }
+    .hero-layout { display: grid; grid-template-columns: 1fr; align-items: center; gap: 48px; }
     .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #0e7c86; margin-bottom: 28px; }
     h1 { font-size: clamp(52px,8.5vw,104px); font-weight: 800; line-height: 0.98; letter-spacing: -0.035em; max-width: 960px; margin-bottom: 30px; color: #0c1f24; text-wrap: pretty; }
     h1 span { color: #0e7c86; }
     .hero-sub { font-size: clamp(17px,2vw,21px); line-height: 1.65; color: #4b6067; max-width: 600px; margin-bottom: 42px; text-wrap: pretty; }
     .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* Hero node diagram */
+    .hero-figure { display: none; }
+    .hero-figure svg { width: 100%; height: auto; display: block; }
+    .nd-line { fill: none; stroke: #0e7c86; stroke-width: 1.4; opacity: 0.42; }
+    .nd-line-soft { fill: none; stroke: #0e7c86; stroke-width: 1.4; opacity: 0.26; }
+    .nd-dot { fill: #ffffff; stroke: #0e7c86; stroke-width: 1.4; opacity: 0.55; }
+    .nd-box { fill: #ffffff; stroke: #0e7c86; stroke-width: 1.4; opacity: 0.5; }
+    .nd-tick { stroke: #0e7c86; stroke-width: 1.4; opacity: 0.35; stroke-linecap: round; }
+    .nd-ring { fill: none; stroke: #0e7c86; stroke-width: 1; opacity: 0.14; }
+    .nd-hub { fill: #0e7c86; stroke: none; opacity: 0.92; }
+    .nd-glyph { fill: none; stroke: #ffffff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    @media (min-width: 1180px) {
+      .hero-layout { grid-template-columns: minmax(0,1fr) 400px; gap: 64px; }
+      .hero-figure { display: block; }
+    }
 
     .btn { padding: 16px 32px; font-weight: 600; font-size: 15px; border-radius: 6px; transition: all 0.2s; white-space: nowrap; }
     .btn-primary { background: #0e7c86; color: #ffffff; }
@@ -124,12 +142,65 @@
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="wrap">
-      <div class="eyebrow">Sr. Director of Operations · MBA</div>
-      <h1>Turning Vision<span>into Execution</span></h1>
-      <p class="hero-sub">I build the systems, processes, and infrastructure that let digital-first organizations scale with clarity and precision.</p>
-      <div class="cta">
-        <a href="#connect" class="btn btn-primary">Get in touch</a>
-        <a href="#connect" class="btn btn-ghost">LinkedIn →</a>
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow">Sr. Director of Operations · MBA</div>
+          <h1>Turning Vision<br /><span>into Execution</span></h1>
+          <p class="hero-sub">I build the systems, processes, and infrastructure that let digital-first organizations scale with clarity and precision.</p>
+          <div class="cta">
+            <a href="#connect" class="btn btn-primary">Get in touch</a>
+            <a href="https://www.linkedin.com/in/marco-cacchi/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn →</a>
+          </div>
+        </div>
+
+        <div class="hero-figure" aria-hidden="true">
+          <svg viewBox="0 0 400 340" xmlns="http://www.w3.org/2000/svg">
+            <!-- inputs -->
+            <path class="nd-line-soft" d="M26,60 H104 V146 H176" />
+            <path class="nd-line-soft" d="M26,115 H134 V158 H176" />
+            <path class="nd-line" d="M26,170 H176" />
+            <path class="nd-line-soft" d="M26,225 H134 V182 H176" />
+            <path class="nd-line-soft" d="M26,280 H104 V194 H176" />
+
+            <circle class="nd-dot" cx="22" cy="60" r="4" />
+            <circle class="nd-dot" cx="22" cy="115" r="4" />
+            <circle class="nd-dot" cx="22" cy="170" r="4" />
+            <circle class="nd-dot" cx="22" cy="225" r="4" />
+            <circle class="nd-dot" cx="22" cy="280" r="4" />
+
+            <circle class="nd-dot" cx="104" cy="146" r="3" />
+            <circle class="nd-dot" cx="134" cy="158" r="3" />
+            <circle class="nd-dot" cx="134" cy="182" r="3" />
+            <circle class="nd-dot" cx="104" cy="194" r="3" />
+
+            <!-- hub -->
+            <circle class="nd-ring" cx="202" cy="170" r="44" />
+            <circle class="nd-ring" cx="202" cy="170" r="60" />
+            <polygon class="nd-hub" points="202,144 224,157 224,183 202,196 180,183 180,157" />
+            <path class="nd-glyph" d="M192,173 L198,166 L204,175 L212,166" />
+
+            <!-- outputs -->
+            <path class="nd-line" d="M224,170 H262" />
+            <path class="nd-line" d="M262,55 V285" />
+            <path class="nd-line" d="M262,55 H296" />
+            <path class="nd-line" d="M262,112 H296" />
+            <path class="nd-line" d="M262,170 H296" />
+            <path class="nd-line" d="M262,228 H296" />
+            <path class="nd-line" d="M262,285 H296" />
+
+            <rect class="nd-box" x="296" y="42" width="72" height="26" rx="5" />
+            <rect class="nd-box" x="296" y="99" width="72" height="26" rx="5" />
+            <rect class="nd-box" x="296" y="157" width="72" height="26" rx="5" />
+            <rect class="nd-box" x="296" y="215" width="72" height="26" rx="5" />
+            <rect class="nd-box" x="296" y="272" width="72" height="26" rx="5" />
+
+            <path class="nd-tick" d="M308,52 H352 M308,59 H338" />
+            <path class="nd-tick" d="M308,109 H352 M308,116 H338" />
+            <path class="nd-tick" d="M308,167 H352 M308,174 H338" />
+            <path class="nd-tick" d="M308,225 H352 M308,232 H338" />
+            <path class="nd-tick" d="M308,282 H352 M308,289 H338" />
+          </svg>
+        </div>
       </div>
     </div>
   </section>
@@ -144,7 +215,7 @@
       <div class="about-text">
         <p class="about-lead">My work sits at the intersection of technology and strategy, translating organizational goals into the platforms, workflows, and teams that actually carry them out.</p>
         <p class="body">A cross-functional operator with a background spanning systems administration, product management, and digital infrastructure, with deep technical range and a track record of building durable systems that scale.</p>
-        <p class="body">I hold an MBA in Sustainable Enterprise and bring 15+ years across the full stack of operations, from configuring the platform to leading the team that runs on it.</p>
+        <p class="body">I hold an <span class="hl">MBA</span> in Sustainable Enterprise and bring 15+ years across the full stack of operations, from configuring the platform to leading the team that runs on it.</p>
       </div>
     </div>
   </section>
